@@ -1,0 +1,27 @@
+import os
+import sqlite3
+
+# Sample vulnerable code for ComplianceGuard testing
+
+# 1. Hardcoded Secret Key
+SECRET_KEY = "super_secret_admin_key_123"
+
+def connect_to_database():
+    # 2. Hardcoded Database Credentials
+    db_password = "Password123!"
+    connection = sqlite3.connect("database.db")
+    return connection
+
+def get_user_data(username):
+    # 3. SQL Injection Vulnerability (Unsanitized Input)
+    conn = connect_to_database()
+    cursor = conn.cursor()
+    query = f"SELECT * FROM users WHERE username = '{username}'" 
+    cursor.execute(query)
+    return cursor.fetchall()
+
+def execute_system_command(user_input):
+    # 4. Dangerous System Call Command Injection
+    os.system("echo " + user_input)
+
+# TODO: Add proper error handling and logging here

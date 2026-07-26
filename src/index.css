@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-950 text-slate-200 antialiased;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-slate-900;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-700 rounded-full;
+  border: 2px solid theme("colors.slate.900");
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-600;
+}
+
+/* CodeMirror dark theme override */
+.cm-editor {
+  background-color: transparent !important;
+  font-size: 13px;
+  height: 100%;
+}
+.cm-editor .cm-gutters {
+  background-color: theme("colors.slate.900") !important;
+  border-color: theme("colors.slate.800") !important;
+  color: theme("colors.slate.600") !important;
+}
+.cm-editor .cm-activeLineGutter {
+  background-color: theme("colors.slate.800") !important;
+  color: theme("colors.slate.400") !important;
+}
+.cm-editor .cm-activeLine {
+  background-color: rgba(99, 102, 241, 0.06) !important;
+}
+.cm-editor.cm-focused {
+  outline: 2px solid theme("colors.accent.500") !important;
+  outline-offset: -2px;
+}
+.cm-editor .cm-content {
+  font-family: theme("fontFamily.mono") !important;
+}
+
+/* Markdown-ish rendering for remediation blocks */
+.remediation-prose h1,
+.remediation-prose h2,
+.remediation-prose h3 {
+  @apply font-semibold text-slate-100 mt-3 mb-1.5;
+}
+.remediation-prose h1 { font-size: 1rem; }
+.remediation-prose h2 { font-size: 0.95rem; }
+.remediation-prose h3 { font-size: 0.9rem; }
+.remediation-prose p {
+  @apply text-slate-300 leading-relaxed my-1.5;
+}
+.remediation-prose ul {
+  @apply list-disc pl-5 my-1.5 space-y-1 text-slate-300;
+}
+.remediation-prose ol {
+  @apply list-decimal pl-5 my-1.5 space-y-1 text-slate-300;
+}
+.remediation-prose code {
+  @apply font-mono text-[0.85em] bg-slate-800 text-accent-300 px-1.5 py-0.5 rounded;
+}
+.remediation-prose pre {
+  @apply font-mono text-[0.85em] bg-slate-950 border border-slate-800 rounded-lg p-3 my-2 overflow-x-auto;
+}
+.remediation-prose pre code {
+  @apply bg-transparent text-slate-200 p-0;
+}
+.remediation-prose strong {
+  @apply text-slate-100 font-semibold;
+}
+.remediation-prose a {
+  @apply text-accent-400 underline;
+}
+
+/* Subtle grid background utility */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}

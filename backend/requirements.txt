@@ -1,0 +1,22 @@
+# Enterprise Code Compliance Scanner - Python Dependencies
+# Modern package names as of 2024-2025
+
+# Google GenAI modern SDK (replaces legacy google-generativeai for new projects)
+google-genai>=1.0.0
+
+# Pinecone vector database (modern unified client, not pinecone-client legacy)
+pinecone>=5.0.0
+
+# LangChain document loaders + text splitter (text splitters are split into own package now)
+langchain>=0.3.0
+langchain-community>=0.3.0
+langchain-text-splitters>=0.3.0
+
+# PDF parsing support for LangChain PyPDFLoader
+pypdf>=5.0.0
+
+# Environment variable loading from .env
+python-dotenv>=1.0.1
+
+# Tokenizer used for accurate token-aware chunking fallback
+tiktoken>=0.7.0

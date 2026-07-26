@@ -1,0 +1,78 @@
+SOC 2 / ISO 27001 SIMULATED COMPLIANCE RULES
+============================================
+
+SECTION 1: ACCESS CONTROL AND AUTHENTICATION (SOC 2 CC6.1)
+
+Rule 1.1 - Hardcoded Secrets Prohibition
+No production source code, configuration file, or deployment script may contain
+hardcoded passwords, API keys, private tokens, or database connection strings.
+All secrets must be retrieved at runtime from a managed secret store such as
+AWS Secrets Manager, HashiCorp Vault, or environment variables injected by the
+runtime. Hardcoded credentials in source code constitute a Critical finding.
+
+Rule 1.2 - Password Complexity
+All user-facing authentication systems must enforce passwords of at least 12
+characters in length, containing at least one uppercase letter, one lowercase
+letter, one digit, and one special character.
+
+Rule 1.3 - Multi-Factor Authentication
+Administrative access to production systems must require multi-factor
+authentication. Single-factor password-only access to admin endpoints is a
+High finding.
+
+SECTION 2: DATA PROTECTION (ISO 27001 A.8.24)
+
+Rule 2.1 - Encryption In Transit
+All data transmitted over public networks must use TLS 1.2 or greater.
+Plain HTTP, SSLv3, and TLS 1.0/1.1 are prohibited for any authenticated
+traffic. Violations are classified as High severity.
+
+Rule 2.2 - Encryption At Rest
+All personally identifiable information (PII) stored in databases or object
+storage must be encrypted at rest using AES-256 or an equivalent approved
+algorithm. Storing unencrypted PII is a Critical finding.
+
+Rule 2.3 - Logging of Sensitive Data
+Application logs must never contain full credit card numbers, passwords,
+session tokens, or access keys. Sensitive data appearing in log output is a
+High finding.
+
+SECTION 3: INPUT VALIDATION (OWASP / SOC 2 CC6.6)
+
+Rule 3.1 - SQL Injection Prevention
+All database queries that incorporate user input must use parameterized
+queries or prepared statements. String concatenation of user input into SQL
+is prohibited and is a Critical finding.
+
+Rule 3.2 - Command Injection Prevention
+User input must never be passed directly to shell execution functions such
+as os.system, subprocess.run with shell=True, or eval. Use parameter arrays
+with shell=False. Violations are Critical.
+
+Rule 3.3 - Cross-Site Scripting Prevention
+All user-supplied content rendered in HTML must be HTML-escaped or rendered
+through a framework's automatic contextual escaping engine.
+
+SECTION 4: DEPENDENCY MANAGEMENT (ISO 27001 A.8.28)
+
+Rule 4.1 - Vulnerable Dependencies
+Dependencies with known CVEs rated High or Critical must be upgraded or
+patched within 30 days of public disclosure. Running unpatched high-severity
+dependencies is a High finding.
+
+Rule 4.2 - Pinned Versions
+Production deployments must pin dependency versions to specific releases.
+Floating "latest" tags in production manifests are a Medium finding.
+
+SECTION 5: ERROR HANDLING AND INFORMATION DISCLOSURE
+
+Rule 5.1 - Verbose Error Messages
+Unhandled exceptions must not return stack traces, file paths, or internal
+system details to end users. A generic error page must be shown instead.
+Detailed stack traces exposed to clients are a Medium finding.
+
+Rule 5.2 - Secure Exception Handling
+All external input processing code paths must be wrapped in try/except blocks
+that log the error internally and surface a sanitized message to the user.
+
+END OF COMPLIANCE RULES DOCUMENT
