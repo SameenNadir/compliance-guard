@@ -1,0 +1,25 @@
+# ComplianceGuard
+
+An AI-assisted security and compliance auditor. It parses security policy documents using the Gemini API and a RAG pipeline with vector search, then generates automated audit reports in a web dashboard.
+
+## Tech Stack
+- **Backend:** Python, FastAPI
+- **Frontend:** React, Vite, TypeScript, Tailwind CSS
+- **AI:** Google Gemini API, RAG with vector search
+- **Tooling:** Docker, automated tests
+
+## Features
+- Policy document parsing with RAG and vector search
+- Automated report generation
+- REST API endpoints
+- Dashboard UI
+- Docker containerization
+
+## Setup (local)
+1. Clone the repo.
+2. Backend: `cd backend`, then `pip install -r requirements.txt`, then start the FastAPI server (for example `uvicorn main:app --reload`).
+3. Frontend: in the repo root, `npm install`, then `npm run dev`.
+4. Add your own Gemini API key to a `.env` file (never commit it).
+
+## License
+MIT. See the [LICENSE](LICENSE) file.
